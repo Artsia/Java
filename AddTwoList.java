@@ -1,4 +1,4 @@
-/**
+**
  * Definition for singly-linked list.
  * public class ListNode {
  *     int val;
@@ -17,14 +17,17 @@ class Solution {
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         Solution n = new Solution();
-        n.countLength(l1,l2);
-        System.out.print("Current length of largest list : "+n.listElmCount());
-        System.out.println();
+        //n.countLength(l1,l2);
+        //System.out.print("Current length of largest list : "+n.listElmCount());
+        //System.out.println();
         //n.printL(l1);
 
-        n.caseOne(l1,l2);
+        //n.caseOne(l1,l2);
+        int [] a = {7,0,8};
+        ListNode j = n.addNode(a);
+        n.printL(j);
        
-        return l1; //not final result
+        return j;
         
     }
 
@@ -41,19 +44,23 @@ class Solution {
             if(sum >= 10){
                 //store difference
                 //int diff = Math.abs(sum - 10);
-                 int diff = sum - 10;
+                int diff = sum - 10;
                 if(diff == 0){
                     System.out.println("Diffrence1: "+diff);
                     arr[index] =  diff;
                     reimaider = 1;
                     arr[index+1] = reimaider;
-                }else if(diff > 0){
+
+                    if(diff > 0){
                     System.out.println("Diffrence2: "+diff);
                     arr[index] =  diff;
                     reimaider = 1+diff;
                     arr[index+1] = reimaider;
+                  
                 }
-
+                    
+                }
+             
             }
             //arr[index] =  t1 + t2 + reimaider;
             arr[index] += sum; 
@@ -72,6 +79,35 @@ class Solution {
         
      }
 
+    //after getting correct result create a new list to be returned in main method
+
+    private ListNode addNode(int [] arr){
+        int aLength = arr.length-1;
+        ListNode head = null;
+        if(aLength == 1){
+            head = new ListNode();
+            head.val = arr[0];
+            return head;
+        }
+        
+        //retieve number in reverse within array
+        ListNode list = new ListNode(arr[aLength]); //head of list is empty h -> null
+        
+        int counter = aLength;
+        while(counter != 0){
+            ListNode newNode = new ListNode(arr[counter]);
+            head = newNode;
+            if(head != null){
+                ListNode temp;
+                temp = head.next;
+                head = temp;
+            }
+            counter--;
+        }
+
+
+        return head;
+    }
     
     
 
