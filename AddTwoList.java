@@ -1,9 +1,4 @@
-/**You are given two non-empty linked lists representing two non-negative integers. 
- * The digits are stored in reverse order, and each of their nodes contains a single digit. 
- * Add the two numbers and return the sum as a linked list. 
- * */
-
- /**
+/**
  * Definition for singly-linked list.
  * public class ListNode {
  *     int val;
@@ -43,10 +38,25 @@ class Solution {
             t1 = l1.val;
             t2 = l2.val;
             sum =  t1 + t2;
-            if(){
-                
+            if(sum >= 10){
+                //store difference
+                //int diff = Math.abs(sum - 10);
+                 int diff = sum - 10;
+                if(diff == 0){
+                    System.out.println("Diffrence1: "+diff);
+                    arr[index] =  diff;
+                    reimaider = 1;
+                    arr[index+1] = reimaider;
+                }else if(diff > 0){
+                    System.out.println("Diffrence2: "+diff);
+                    arr[index] =  diff;
+                    reimaider = 1+diff;
+                    arr[index+1] = reimaider;
+                }
+
             }
-            arr[index] =  t1 + t2;
+            //arr[index] =  t1 + t2 + reimaider;
+            arr[index] += sum; 
             
             l1 = l1.next;
             l2 = l2.next;
@@ -55,7 +65,7 @@ class Solution {
         }
 
         while(i2 != arr.length){
-         System.out.println(arr[i2]);
+         System.out.print(arr[i2]+" --> ");
          i2++;
         }
 
