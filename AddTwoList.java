@@ -24,7 +24,7 @@ class Solution {
 
         n.caseOne(l1,l2);
        
-        return l1;
+        return l1; //not final result
         
     }
 
